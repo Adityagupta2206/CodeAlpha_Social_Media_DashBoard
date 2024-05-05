@@ -1,0 +1,57 @@
+/* Custom CSS for the dashboard layout */
+.dashboard-container {
+    padding-top: 50px; /* Adjust as needed */
+  }
+  
+  /* Styling for feed sections */
+  .feed-section {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff; /* White background */
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  }
+  
+  /* Heading styles */
+  .feed-section h2 {
+    margin-bottom: 20px;
+    color: #333; /* Dark text color */
+  }
+  
+  /* Feed item styles */
+  .feed-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #f5f5f5; /* Light gray background */
+    border-radius: 5px;
+  }
+  
+  /* Feed item text styles */
+  .feed-item p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  /* Feed item image styles */
+  .feed-item img {
+    max-width: 100%;
+    border-radius: 5px;
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    background-color: #4CAF50; /* Green button color */
+    border-color: #4CAF50;
+    color: #fff; /* White text color */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  

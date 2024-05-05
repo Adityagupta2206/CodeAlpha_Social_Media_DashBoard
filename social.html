@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Social Media Dashboard</title>
+ 
+  <link rel="stylesheet" href="style.css">
+ 
+</head>
+<body>
+  <div class="container dashboard-container">
+    <h1 class="text-center mb-5">Social Media Dashboard</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="feed-section">
+          <h2>Facebook Feed</h2>
+          <div id="facebook-feed">
+          
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feed-section">
+          <h2>Twitter Feed</h2>
+          <div id="twitter-feed">
+          
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feed-section">
+          <h2>Instagram Feed</h2>
+          <div id="instagram-feed">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button id="refresh-btn" class="btn btn-primary">Refresh Feeds</button>
+    </div>
+  </div>
+
+  <script>
+   
+    const predefinedFeeds = {
+      facebook: [
+        {
+          text: "<strong>John Doe</strong> shared a photo: 'Beautiful sunset at the beach! 🌅 #vacation'",
+          image: "https://images.unsplash.com/photo-1616036740257-9449ea1f6605?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3Vuc2V0JTIwYmVhY2h8ZW58MHx8MHx8fDA%3D"
+        },
+        {
+          text: "<strong>Alice Smith</strong> posted: 'Excited for the upcoming concert! 🎤🎶 #musiclover'",
+          image: "https://static.toiimg.com/thumb/imgsize-23456,msid-96386858,width-600,resizemode-4/96386858.jpg"
+        },
+        {
+            text: "<strong>username1</strong>: Beautiful scenery from my morning hike! 🏞️ #naturelovers",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqzppf5LNZzHEkM-E_aD0cS7YkbdoXGpZar1tUs9dfgA&s"
+          },
+          {
+            text: "<strong>username2</strong>: Loving my new outfit! 💃 #fashionista",
+            image: "https://www.refinery29.com/images/11621696.jpg?format=webp&width=720&height=864&quality=85&crop=5%3A6"
+          },
+        {
+          text: "<strong>@user2</strong>: Excited to announce our new product launch! Stay tuned for updates. #productlaunch",
+          image: "https://img.freepik.com/free-vector/colorful-new-product-composition-with-flat-design_23-2147927004.jpg"
+        },
+        {
+            text: "<strong>username1</strong>: Beautiful scenery from my morning hike! 🏞️ #naturelovers",
+            image: "https://images.squarespace-cdn.com/content/v1/5982fa4fe58c62cb28091fa4/1567589355415-EQ1C89VMGPQZHIC9BY5S/image-asset.jpeg"
+          },
+          {
+            text: "<strong>username2</strong>: Loving my new outfit! 💃 #fashionista",
+            image: "https://publish.purewow.net/wp-content/uploads/sites/2/2023/12/new-years-eve-outfit-ideas-2023-UNI.jpg?resize=720%2C780"
+          },
+        {
+          text: "<strong>David Johnson</strong> updated his status: 'Just finished reading an amazing book! 📚 Highly recommend it.'",
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjxGdVnB4_C0Nj0rr468YPG8ScCe9CXsVJac7EeZ2afA&s"
+        }
+      ],
+      twitter: [
+        {
+          text: "<strong>@user1</strong>: Just had the best meal ever at my favorite restaurant! 🍔🍟 #foodie",
+          image: "https://static.toiimg.com/photo/76942221.cms"
+        },
+        {
+            text: "<strong>John Doe</strong> shared a photo: 'Beautiful sunset at the beach! 🌅 #vacation'",
+            image: "https://i.insider.com/5b08cb3f1ae6624b008b472a?width=1136&format=jpeg"
+          }, {
+            text: "<strong>username1</strong>: Beautiful scenery from my morning hike! 🏞️ #naturelovers",
+            image: "https://static.toiimg.com/photo/76942221.cms"
+          },
+          {
+            text: "<strong>username2</strong>: Loving my new outfit! 💃 #fashionista",
+            image: "https://www.refinery29.com/images/11423858.jpg?format=webp&width=720&height=864&quality=85"
+          },
+          {
+            text: "<strong>Alice Smith</strong> posted: 'Excited for the upcoming concert! 🎤🎶 #musiclover'",
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/D%C3%BClmen%2C_D%C3%BClmener_Sommer%2C_Open-Air-Konzert%2C_%22Bounce%22_--_2018_--_0051.jpg/1200px-D%C3%BClmen%2C_D%C3%BClmener_Sommer%2C_Open-Air-Konzert%2C_%22Bounce%22_--_2018_--_0051.jpg"
+          },
+          {
+              text: "<strong>username1</strong>: Beautiful scenery from my morning hike! 🏞️ #naturelovers",
+              image: "https://mountain-hiking.com/wp-content/uploads/2022/11/Plan-Sunrise-Hike-5272.jpg"
+            },
+            {
+              text: "<strong>username2</strong>: Loving my new outfit! 💃 #fashionista",
+              image: "https://media.glamour.com/photos/657cab4ea6fb977ad911bbe0/4:3/w_2664,h_1998,c_limit/new%20year%E2%80%99s%20eve%20outfit%20ideas.jpg"
+            },
+        {
+          text: "<strong>@user2</strong>: Excited to announce our new product launch! Stay tuned for updates. #productlaunch",
+          image: "https://media.licdn.com/dms/image/C5612AQHZ14CReZm6BA/article-cover_image-shrink_600_2000/0/1520058584382?e=2147483647&v=beta&t=be7C752QjKQfxKgRQQXaKKxTwabF7X_Wf0l0Lg5wR5Q"
+        },
+        {
+          text: "<strong>@user3</strong>: Enjoying the sunny weather today! ☀️ #summerdays",
+          image: "https://americanhiking.org/wp-content/uploads/2014/12/IMG_3548.jpg"
+        }
+      ],
+      instagram: [
+        {
+          text: "<strong>username1</strong>: Beautiful scenery from my morning hike! 🏞️ #naturelovers",
+          image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fbuffer.com%2Flibrary%2Ffree-images%2F&psig=AOvVaw1Hz0AKWolOYokG8qVL3Z7D&ust=1714934706333000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLCss-HT9IUDFQAAAAAdAAAAABAE"
+        },
+        {
+          text: "<strong>username2</strong>: Loving my new outfit! 💃 #fashionista",
+          image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fbuffer.com%2Flibrary%2Ffree-images%2F&psig=AOvVaw1Hz0AKWolOYokG8qVL3Z7D&ust=1714934706333000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLCss-HT9IUDFQAAAAAdAAAAABAE"
+        },
+        {
+            text: "<strong>@user1</strong>: Just had the best meal ever at my favorite restaurant! 🍔🍟 #foodie",
+            image: "https://takethemameal.com/files_images_v2/stam.jpg"
+          },
+          {
+            text: "<strong>John Doe</strong> shared a photo: 'Beautiful sunset at the beach! 🌅 #vacation'",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSxb2gio4DQPAKzMP1WS5lSnBJCPjW3nmBHIp5cwuJ_w&s"
+          },
+          {
+            text: "<strong>Alice Smith</strong> posted: 'Excited for the upcoming concert! 🎤🎶 #musiclover'",
+            image: "https://www.eatingwell.com/thmb/zvHrm_Z8F2qLeJenpJ6lYodtq7M=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/57831531-73819d8ce8f5413cac42cf1c907bc37a.jpg"
+          },
+          {
+              text: "<strong>username1</strong>: Beautiful scenery from my morning hike! 🏞️ #naturelovers",
+              image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlroRHv14LWzfNC9Vy8H_-26RlL1_i_75u4KNoSVW0lNmkRIraqZhy_qSMgXoq4Ng8qnQ&usqp=CAU"
+            },
+            {
+              text: "<strong>username2</strong>: Loving my new outfit! 💃 #fashionista",
+              image: "https://www.instyle.com/thmb/Paz_Tj_n6a9GzXv_ePTZQYZ3moI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/120623-casual-nye-outfits-lead-71f37ad466d240abba6d54774c0608f0.jpg"
+            },
+          {
+            text: "<strong>@user2</strong>: Excited to announce our new product launch! Stay tuned for updates. #productlaunch",
+            image: "https://www.todaysoftmag.com/images/articles/tsm58/Img3.jpg"
+          },
+        {
+          text: "<strong>username3</strong>: Just adopted the cutest puppy ever! 🐶❤️ #puppylove",
+          image: "https://t3.ftcdn.net/jpg/04/51/45/64/360_F_451456429_NEhYtAGBfPL7YRjOxsW8qd1iLCEqGP1w.jpg"
+        }
+      ]
+    };
+
+   
+    function shuffleArray(array) {  
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+   
+    function refreshFeeds() {
+     
+      const shuffledFeeds = {
+        facebook: shuffleArray(predefinedFeeds.facebook),
+        twitter: shuffleArray(predefinedFeeds.twitter),
+        instagram: shuffleArray(predefinedFeeds.instagram)
+      };
+
+     
+      document.getElementById("facebook-feed").innerHTML = shuffledFeeds.facebook.slice(0, 2).map(post => `
+        <div class="feed-item">
+          
+          <img src="${post.image}" alt="Facebook Image">
+          ${post.text}
+        </div>
+      `).join('');
+
+     
+      document.getElementById("twitter-feed").innerHTML = shuffledFeeds.twitter.slice(0, 2).map(post => `
+        <div class="feed-item">
+         
+          <img src="${post.image}" alt="Twitter Image">
+          ${post.text}
+        </div>
+      `).join('');
+
+     
+      document.getElementById("instagram-feed").innerHTML = shuffledFeeds.instagram.slice(0, 2).map(post => `
+        <div class="feed-item">
+         
+          <img src="${post.image}" alt="Instagram Image">
+          ${post.text}
+        </div>
+      `).join('');
+    }
+
+   
+    document.getElementById("refresh-btn").addEventListener("click", refreshFeeds);
+
+    
+    refreshFeeds();
+  </script>
+</body>
+</html>
